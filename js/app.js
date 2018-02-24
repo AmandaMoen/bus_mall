@@ -8,7 +8,7 @@ Product.all = [];
 // Set up an array to prevent duplicates.
 Product.viewed = [];
 // Click counter to 25.
-Product.totalClicks = 0;
+var totalClicks = 0;
 
 // Where the product images will be located on the website.
 Product.container = document.getElementById('image_container');
@@ -65,12 +65,15 @@ function handleClick(event) {
 		return alert('Be sure to click on an image.');
 	}
 	// Make sure that we have a way to remove the event listener.
-	if (Product.totalClicks > 24) {
+	totalClicks += 1;
+	console.log(totalClicks);
+	if (totalClicks >= 25) {
 		Product.container.removeEventListener('click', handleClick);
 		Product.container.style.display = 'none';
-		showList();
+		// showList();
+		createChart();
+
 	}
-	Product.totalClicks += 1;
 	for (var i = 0; i < Product.names.length; i++) {
 		if (event.target.alt === Product.all[i].name) {
 			Product.all[i].votes += 1;
@@ -102,3 +105,102 @@ function showList() {
 
 displayPictures();
 Product.container.addEventListener('click', handleClick);
+
+// Chart take 3
+
+function createChart () {
+	var votes = [];
+	for (var i = 0; i < Product.names.length; i++) {
+		votes[i] = Product.all[i].votes;
+	}
+	var ctx = document.getElementById("myBarChart").getContext('2d');
+	var myBarChart = new Chart(ctx, {
+	    type: 'bar',
+    	data: {
+        	labels: ["bag", "banana", "bathroom", "boots", "breakfast", "bubblegum", "chair", "cthulhu", "dog-duck", "dragon", "pen", "pet-sweep", "scissors", "shark", "sweep", "tauntaun", "unicorn", "usb", "water-can", "wine-glass"],
+        	datasets: [{
+            	label: "Total Votes Per Product",
+            	data: votes,
+            	fill: false,
+            	backgroundColor: [
+            	'#71BF4A',
+            	'#2263AE',
+            	'#43C4DD',
+            	'#009E6D',
+      			'#71BF4A',
+            	'#2263AE',
+            	'#43C4DD',
+            	'#009E6D',
+      			'#71BF4A',
+            	'#2263AE',
+            	'#43C4DD',
+            	'#009E6D',
+      			'#71BF4A',
+            	'#2263AE',
+            	'#43C4DD',
+            	'#009E6D',
+      			'#71BF4A',
+            	'#2263AE',
+            	'#43C4DD',
+            	'#009E6D',
+      			],
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                    stepSize: 1
+                }
+            }]
+        }
+    }
+});
+}
+// Chart stuff:
+/*function makeDataArrays() {
+	for (var i = 0; i < Product.all.length; i++) {
+
+	}
+}
+// Make the below a function of something.
+var chartClicks = [];
+var chartViews = [];
+
+function (var myBarChart = new Chart(document.getElementByID("myBarChart")), {
+	type: 'bar',
+	data: {
+		labels: ["bag", "banana", "bathroom", "boots", "breakfast", "bubblegum", "chair", "cthulhu", "dog-duck", "dragon", "pen", "pet-sweep", "scissors", "shark", "sweep", "tauntaun", "unicorn", "usb", "water-can", "wine-glass"],
+		datasets: [
+		label: "Total Votes Per Product",
+		data: ]
+	}
+}
+
+// This is a sample to look at.
+/* new Chart(document.getElementById("chartjs-1"),{
+	"type":"bar",
+	"data":{
+		"labels":["January","February","March","April","May","June","July"],
+		"datasets":[{
+			"label":"My First Dataset",
+			"data":[65,59,80,81,56,55,40],
+			"fill":false,
+			"backgroundColor":["rgba(255, 99, 132, 0.2)",
+			"rgba(255, 159, 64, 0.2)",
+			"rgba(255, 205, 86, 0.2)",
+			"rgba(75, 192, 192, 0.2)",
+			"rgba(54, 162, 235, 0.2)",
+			"rgba(153, 102, 255, 0.2)",
+			"rgba(201, 203, 207, 0.2)"],
+			"borderColor":["rgb(255, 99, 132)",
+			"rgb(255, 159, 64)",
+			"rgb(255, 205, 86)",
+			"rgb(75, 192, 192)",
+			"rgb(54, 162, 235)",
+			"rgb(153, 102, 255)",
+			"rgb(201, 203, 207)"],
+			"borderWidth":1}]},
+			"options":{"scales":{
+				"yAxes":[{"ticks":{"beginAtZero":true}}]}}});*/
