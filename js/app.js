@@ -23,7 +23,6 @@ function Product(name) {
 	this.name = name.slice(0, -4);
 	// Tell where to find the image.
 	this.path = 'images/' + name;	
-	// Need to create something for the single GIF, so it remains a GIF.
 	this.votes = 0;
 	this.views = 0;
 	Product.all.push(this);
@@ -64,9 +63,9 @@ function handleClick(event) {
 	if (event.target === Product.container) {
 		return alert('Be sure to click on an image.');
 	}
-	// Make sure that we have a way to remove the event listener.
 	totalClicks += 1;
 	console.log(totalClicks);
+	// Make sure that we have a way to remove the event listener.
 	if (totalClicks >= 25) {
 		Product.container.removeEventListener('click', handleClick);
 		Product.container.style.display = 'none';
@@ -158,49 +157,3 @@ function createChart () {
     }
 });
 }
-// Chart stuff:
-/*function makeDataArrays() {
-	for (var i = 0; i < Product.all.length; i++) {
-
-	}
-}
-// Make the below a function of something.
-var chartClicks = [];
-var chartViews = [];
-
-function (var myBarChart = new Chart(document.getElementByID("myBarChart")), {
-	type: 'bar',
-	data: {
-		labels: ["bag", "banana", "bathroom", "boots", "breakfast", "bubblegum", "chair", "cthulhu", "dog-duck", "dragon", "pen", "pet-sweep", "scissors", "shark", "sweep", "tauntaun", "unicorn", "usb", "water-can", "wine-glass"],
-		datasets: [
-		label: "Total Votes Per Product",
-		data: ]
-	}
-}
-
-// This is a sample to look at.
-/* new Chart(document.getElementById("chartjs-1"),{
-	"type":"bar",
-	"data":{
-		"labels":["January","February","March","April","May","June","July"],
-		"datasets":[{
-			"label":"My First Dataset",
-			"data":[65,59,80,81,56,55,40],
-			"fill":false,
-			"backgroundColor":["rgba(255, 99, 132, 0.2)",
-			"rgba(255, 159, 64, 0.2)",
-			"rgba(255, 205, 86, 0.2)",
-			"rgba(75, 192, 192, 0.2)",
-			"rgba(54, 162, 235, 0.2)",
-			"rgba(153, 102, 255, 0.2)",
-			"rgba(201, 203, 207, 0.2)"],
-			"borderColor":["rgb(255, 99, 132)",
-			"rgb(255, 159, 64)",
-			"rgb(255, 205, 86)",
-			"rgb(75, 192, 192)",
-			"rgb(54, 162, 235)",
-			"rgb(153, 102, 255)",
-			"rgb(201, 203, 207)"],
-			"borderWidth":1}]},
-			"options":{"scales":{
-				"yAxes":[{"ticks":{"beginAtZero":true}}]}}});*/
