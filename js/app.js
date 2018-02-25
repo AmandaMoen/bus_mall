@@ -28,8 +28,15 @@ function Product(name) {
 	Product.all.push(this);
 }
 
-for (var i = 0; i < Product.names.length; i++) {
-	new Product(Product.names[i]);
+if (localStorage.saveAll) {
+  console.log('localStorage');
+  Product.all =localStorage.getItem('saveAll');
+  Product.all = JSON.parse(Product.all);
+} else {
+  console.log('From scratch');
+	for (var i = 0; i < Product.names.length; i++) {
+		new Product(Product.names[i]);
+	}
 }
 
 // Our Function Declarations
@@ -79,6 +86,9 @@ function handleClick(event) {
 			console.log(event.target.alt + ' has ' + Product.all[i].votes + ' votes in ' + Product.all[i].views + ' views');
 		}
 	}
+	var stringifyTotalClicks = JSON.stringify(Product.all);
+	localStorage.setItem('saveAll', stringifyTotalClicks);
+	
 	displayPictures();
 }
 
@@ -143,8 +153,8 @@ function createChart () {
             	'#43C4DD',
             	'#009E6D',
       			],
-        }]
-    },
+        	}]
+    	},
     options: {
         scales: {
             yAxes: [{
