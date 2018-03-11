@@ -1,14 +1,34 @@
 * {
-  font-family: 'Helvetica';
+  font-family: 'Bree Serif', serif;
 }
 
+body {
+  background: #FFF;
+  width: 960px;
+  margin: 30px auto;font-size: 
+  text-align: center;
+  font-family: 'Bree Serif', serif;
+}
+
+h1 {
+  text-align: center;
+  color: #2263AE;
+}
 img {
-  border: 6px solid #214;
+  border: 3px solid #009e6d;
   border-radius: 20px;
   max-height: 200px;
   max-width: 25%;
   margin: 1.5%;
   vertical-align: middle;
+}
+#image_container {
+  background-color: #43C4DD;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  text-align: center;
+  width: 960px;
+  margin: 0 auto;
 }
 
 li {
@@ -19,9 +39,14 @@ li {
   width: 75%;
 }
 
-color scheme (in order of appearance, most to least):
+footer {
+  padding-top: 5px;
+  border-top: 10px solid #71BF4A;
+}
+
+/*color scheme (in order of appearance, most to least):
 white: 255,255,255 
 dark blue: #2263ae
 light teal: 43c4dd
 green: 009e6d
-neon green: 71bf4a
+neon green: 71bf4a*/
