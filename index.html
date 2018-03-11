@@ -5,8 +5,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>BusMall</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+<!-- I am forced to comment out the reset style sheet, because it always seems to reset the font-size. -->
+<!-- <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css" /> -->
 <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 
 </head>
@@ -14,7 +16,8 @@
 <body>
 	<h1>BusMall Marketing Research Study</h1>
 
-	<p>Click on the product image that you like best out of the 3 images that are presented.</p>
+	<p>Click on the product image that you like best out of the 3 images that are presented.<br>
+	As thanks for your participation in this study, you may opt to be entered into a drawing for a one month pre-paid ORCA card!</p>
 
 	<section id="image_container">
 		<img id="left" src="">
@@ -25,6 +28,12 @@
 	<ul id="productlist"></ul>
 
 	<canvas id="myBarChart" width="800" height="450"></canvas>
+
+<footer>
+	<p>For your local Transit options, please visit one of these sites: </p>
+	<a href="https://www.communitytransit.org/"> <img src="images/communityTransitLogo.png"></a>
+	<a href="https://soundtransit.org/"><img src="images/logo.gif" /></a>
+</footer>
 
 <script src="js/app.js"></script> 
 </body>
